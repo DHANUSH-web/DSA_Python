@@ -1,0 +1,16 @@
+# Executables
+*.exe
+*.bat
+*.msi
+*.sh
+*.App
+*.dmg
+
+# Folder
+.__pycache__/
+.vscode/
+.fleet/
+.idea/
+venv/
+
+# Files
