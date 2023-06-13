@@ -7,7 +7,7 @@
 *.dmg
 
 # Folder
-.__pycache__/
+__pycache__/
 .vscode/
 .fleet/
 .idea/

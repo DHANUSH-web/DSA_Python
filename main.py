@@ -1,9 +1,12 @@
-# Time complexity
-def reverse_str(string: str) -> str:
-    if len(string) <= 1:
-        return string
+import random
+from modules.Sorting.BubbleSort import BubbleSort
+from modules.Sorting.InsertionSort import InsertionSort
 
-    return reverse_str(string[1:]) + string[0]
+nums = [random.randint(0, 100) for _ in range(0, 20)]
+bubbleSort = BubbleSort(arr=nums)
+bubbleSort.sort()
+bubbleSort.printArray()
 
-
-print(reverse_str("hello"))
+insertionSort = InsertionSort(arr=nums)
+insertionSort.sort()
+insertionSort.printArray()
