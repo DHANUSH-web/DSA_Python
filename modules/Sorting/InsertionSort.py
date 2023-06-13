@@ -1,4 +1,5 @@
 class InsertionSort:
+    # Time complexity O(n^2)
 
     def __init__(self, arr) -> None:
         self.arr = arr
