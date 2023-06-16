@@ -11,10 +11,10 @@ class InsertionSort:
             j = i-1
 
             while j >= 0 and self.arr[j] > current:
-                self.arr[i] = self.arr[j]
-                j-=1
+                self.arr[j+1] = self.arr[j]
+                j -= 1
 
-            self.arr[i] = current
+            self.arr[j+1] = current
     
     def printArray(self):
         print(self.arr)
