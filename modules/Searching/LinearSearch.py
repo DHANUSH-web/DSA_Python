@@ -1,8 +1,7 @@
-from abc import ABC
 from BluePrint import Searching
 
 
-class LinearSearch(Searching, ABC):
+class LinearSearch(Searching):
 
     def __init__(self, arr: list) -> None:
         self.arr = arr
@@ -21,6 +20,9 @@ class LinearSearch(Searching, ABC):
     def generator(self) -> GeneratorExit:
         for i in self.arr:
             yield i
+
+    def iterator(self) -> iter:
+        return iter(self.arr)
 
     def printArray(self) -> None:
         for i in self.arr:

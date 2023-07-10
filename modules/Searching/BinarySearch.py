@@ -1,13 +1,13 @@
-from BluePrint import Searching
+from modules.Searching.BluePrint import Searching
 
 
 class BinarySearch(Searching):
 
-    def __init__(self, arr) -> None:
-        self.arr = arr
+    def __init__(self, arr: list) -> None:
+        self.arr = arr.copy()
         self.size = len(self.arr)
 
-    def search(self, target) -> int or None:
+    def search(self, target: any) -> int or None:
         left = 0
         right = self.size - 1
 

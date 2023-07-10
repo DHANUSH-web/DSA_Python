@@ -1,8 +1,12 @@
-class InsertionSort:
+from modules.Sorting.BluePrint import Sorting
+from abc import ABC
+
+
+class InsertionSort(Sorting, ABC):
     # Time complexity O(n^2)
 
-    def __init__(self, arr) -> None:
-        self.arr = arr
+    def __init__(self, arr: list) -> None:
+        self.arr = arr.copy()
         self.size = len(self.arr)
 
     def sort(self):
@@ -15,6 +19,16 @@ class InsertionSort:
                 j -= 1
 
             self.arr[j+1] = current
+
+    def items(self) -> list:
+        return self.arr
+    
+    def generator(self) -> GeneratorExit:
+        for n in self.arr:
+            yield n
+
+    def iterator(self) -> iter:
+        return iter(self.arr)
     
     def printArray(self):
         print(self.arr)
