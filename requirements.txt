@@ -1,5 +1,13 @@
+<<<<<<< HEAD
 requests
 pandas
 matplotlib
 plotly
 numpy
+=======
+pandas
+numpy
+matplotlib
+plotly
+seaborn
+>>>>>>> c5eefd43d7380afbb98a3f2d75b402618492c9ae

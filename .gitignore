@@ -12,5 +12,6 @@ __pycache__/
 .fleet/
 .idea/
 venv/
+virt/
 
 # Files
