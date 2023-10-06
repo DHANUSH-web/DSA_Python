@@ -8,47 +8,28 @@
 import threading
 import string
 import random
-import time
 
+# storing random data in multi-threading
 data = {}
-thread1_count = 0
-thread2_count = 0
 
 
-def pro1() -> None:
-    global thread1_count
+def process(thread_name: str) -> None:
     for _ in range(5):
-        # time.sleep(1)
         name = random.choice(string.ascii_letters)
         data[name] = random.randint(0, 100)
-        print(data[name], " is added by Thread1")
-        thread1_count += 1
-
-
-def pro2() -> None:
-    global thread2_count
-    for _ in range(5):
-        # time.sleep(1)
-        name = random.choice(string.ascii_letters)
-        data[name] = random.randint(0, 100)
-        print(data[name], " is added by Thread2")
-        thread2_count += 1
-
+        print(data[name], "is added by", thread_name)
 
 try:
-    calls = [pro1, pro2]
     threads = []
 
-    for thread in calls:
-        t = threading.Thread(target=thread)
+    for i in range(5):
+        t = threading.Thread(target=process(f"Thread{i}"))
         t.daemon = True
         threads.append(t)
 
     for thread in threads:
         thread.start()
         thread.join()
-
-    print(f"Thread1 Count: {thread1_count}\nThread2 Count: {thread2_count}")
 except RuntimeWarning:
     print("Something went wrong")
 finally:
