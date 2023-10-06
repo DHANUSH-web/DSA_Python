@@ -1,28 +1,55 @@
-<<<<<<< HEAD
-import plotly.express as px
+'''
+    File Name   : main.py
+    File Type   : Python Script
+    Feature     : Asynchronous Processing and Thread Processing
+    Developer   : Dhanush H V
+'''
 
-# data
-dataFrame = px.data.iris()
+import threading
+import string
+import random
+import time
 
-# bar plot
-setosa = dataFrame[dataFrame['species'] == 'setosa']
-bar = px.scatter(data_frame=setosa, y='species', x='sepal_length', color='sepal_length', size='sepal_length', color_continuous_scale='Viridis')
+data = {}
+thread1_count = 0
+thread2_count = 0
 
-bar.update_layout(plot_bgcolor='white')
-bar.show()
-=======
-"""
-Developer: Dhanush H V
-"""
 
-import numpy as np
-import pandas as pd
-import plotly.express as px
+def pro1() -> None:
+    global thread1_count
+    for _ in range(5):
+        # time.sleep(1)
+        name = random.choice(string.ascii_letters)
+        data[name] = random.randint(0, 100)
+        print(data[name], " is added by Thread1")
+        thread1_count += 1
 
-x = np.arange(0, 200)
-y = np.random.randint(0, 100, 200)
 
-df = pd.DataFrame(dict(x=x, y=y))
-fig = px.line(df, x='x', y='y')
-fig.show()
->>>>>>> c5eefd43d7380afbb98a3f2d75b402618492c9ae
+def pro2() -> None:
+    global thread2_count
+    for _ in range(5):
+        # time.sleep(1)
+        name = random.choice(string.ascii_letters)
+        data[name] = random.randint(0, 100)
+        print(data[name], " is added by Thread2")
+        thread2_count += 1
+
+
+try:
+    calls = [pro1, pro2]
+    threads = []
+
+    for thread in calls:
+        t = threading.Thread(target=thread)
+        t.daemon = True
+        threads.append(t)
+
+    for thread in threads:
+        thread.start()
+        thread.join()
+
+    print(f"Thread1 Count: {thread1_count}\nThread2 Count: {thread2_count}")
+except RuntimeWarning:
+    print("Something went wrong")
+finally:
+    print("Data:", data)
