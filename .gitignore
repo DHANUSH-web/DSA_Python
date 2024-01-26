@@ -15,3 +15,4 @@ venv/
 virt/
 
 # Files
+main.py
