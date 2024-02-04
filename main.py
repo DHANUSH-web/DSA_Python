@@ -1,16 +1,24 @@
-from modules.LinkedList import LinkedList
-import random
+from person import Person
+import numpy as np
+import string
 
-nodes = LinkedList()
-FINAL = random.randint(20, 2000)
 
-for i in range(FINAL):
-    nodes.add_first(i)
+def generate_user_id() -> str:
+    pattern = string.ascii_letters + string.digits
+    return "".join(np.random.choice(list(pattern), size=20))
 
-for node in nodes.nodes():
-    print(f"NODE::{node.data} => Mem::{hex(id(node.data))}")
 
-# or use built in print_nodes function
-# nodes.print_nodes()
+DATABASE_SIZE = 2000
 
-print("Total Nodes:", nodes.size)
+users = np.array([
+        dict(name=f"user_#{i+1}", age=np.random.randint(20, 30), userId=generate_user_id())
+        for i in range(DATABASE_SIZE)
+    ])
+user_objects: list[Person] = []
+
+for user in users:
+    person = Person(name=user['name'], age=user['age'], userId=user['userId'])
+    user_objects.append(person)
+
+for person in user_objects:
+    print(f"Name: {person.name}, Age: {person.age}, UserId: {person.get_user_id()}")
